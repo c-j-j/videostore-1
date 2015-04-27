@@ -1,8 +1,8 @@
 import java.util.*;
 
 public class Statement {
-    private String customerName;
-    private List<Rental> rentals = new ArrayList<>();
+    private final String customerName;
+    private final List<Rental> rentals = new ArrayList<>();
 
     public Statement(String customerName) {
         this.customerName = customerName;
