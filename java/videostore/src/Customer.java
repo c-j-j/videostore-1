@@ -1,16 +1,15 @@
-import java.util.Vector;
-import java.util.Enumeration;
+import java.util.*;
 
 public class Customer {
     private String name;
-    private Vector rentals = new Vector();
+    private List<Rental> rentals = new ArrayList<>();
 
     public Customer(String name) {
         this.name = name;
     }
 
     public void addRental(Rental rental) {
-        rentals.addElement(rental);
+        rentals.add(rental);
     }
 
     public String getName() {
@@ -20,12 +19,12 @@ public class Customer {
     public String statement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
-        Enumeration rentals = this.rentals.elements();
+        ListIterator<Rental> rentals = this.rentals.listIterator();
         String result = "Rental Record for " + getName() + "\n";
 
-        while (rentals.hasMoreElements()) {
+        while (rentals.hasNext()) {
             double thisAmount = 0;
-            Rental each = (Rental) rentals.nextElement();
+            Rental each = rentals.next();
 
             // determines the amount for each line
             switch (each.getMovie().getPriceCode()) {
