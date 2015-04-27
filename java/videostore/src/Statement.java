@@ -1,4 +1,6 @@
-import java.util.*;
+import java.util.ArrayList;
+import java.util.List;
+import java.util.stream.Collectors;
 
 public class Statement {
     private final String customerName;
@@ -15,13 +17,13 @@ public class Statement {
     public String generateStatement() {
         String statementText = "";
         statementText += statementTitle();
-
-        for (Rental rental : rentals) {
-            statementText += generateReportLine(rental);
-        }
-
+        statementText += generateLines();
         statementText += generateFooterLine(calculateTotalAmount(), calculateFrequentRenterPoints());
         return statementText;
+    }
+
+    private String generateLines() {
+        return rentals.stream().map(this::generateReportLine).collect(Collectors.joining());
     }
 
     private double calculateTotalAmount() {
