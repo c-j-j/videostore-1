@@ -17,7 +17,7 @@ public class Statement {
         statementText += statementTitle();
 
         for (Rental rental : rentals) {
-            statementText += generateReportLine(rental, rental.determineAmount());
+            statementText += generateReportLine(rental);
         }
 
         statementText += generateFooterLine(calculateTotalAmount(), calculateFrequentRenterPoints());
@@ -41,8 +41,8 @@ public class Statement {
                 + String.format("You earned %d frequent renter points\n", frequentRenterPoints);
     }
 
-    private String generateReportLine(Rental rental, double thisAmount) {
-        return String.format("\t%s\t%s\n", rental.getTitle(), thisAmount);
+    private String generateReportLine(Rental rental) {
+        return String.format("\t%s\t%s\n", rental.getTitle(), rental.determineAmount());
     }
 
 
