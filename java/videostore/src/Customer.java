@@ -26,21 +26,23 @@ public class Customer {
 
             double thisAmount = determineAmount(rental);
             frequentRenterPoints += determineFrequentRenterPoints(rental);
-
             result += generateReportLine(rental, thisAmount);
             totalAmount += thisAmount;
-
         }
 
-        result += "You owed " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
+        result += generateFooterLine(totalAmount, frequentRenterPoints);
+        return result;
+    }
 
+    private String generateFooterLine(double totalAmount, int frequentRenterPoints) {
+        String result = "You owed " + String.valueOf(totalAmount) + "\n";
+        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
         return result;
     }
 
     private String generateReportLine(Rental rental, double thisAmount) {
         return "\t" + rental.getMovie().getTitle() + "\t"
-                        + String.valueOf(thisAmount) + "\n";
+                + String.valueOf(thisAmount) + "\n";
     }
 
     private int determineFrequentRenterPoints(Rental rental) {
