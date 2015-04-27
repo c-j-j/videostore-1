@@ -42,6 +42,4 @@ public class Statement {
     private String generateReportLine(Rental rental) {
         return String.format("\t%s\t%s\n", rental.getTitle(), rental.determineAmount());
     }
-
-
 }
