@@ -5,6 +5,8 @@ import static org.junit.Assert.assertEquals;
 
 public class VideoStoreTest
 {
+	private Customer customer;
+
 	@Before
 	public void setUp() throws Exception {
 		customer = new Customer("Fred");
@@ -38,5 +40,4 @@ public class VideoStoreTest
 		assertEquals ("Rental Record for Fred\n\tPlan 9 from Outer Space\t2.0\n\t8 1/2\t2.0\n\tEraserhead\t3.5\nYou owed 7.5\nYou earned 3 frequent renter points\n", customer.statement ());
 	}
 
-	private Customer customer;
 }
