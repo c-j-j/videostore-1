@@ -1,5 +1,4 @@
 import java.util.*;
-import java.util.function.ToIntFunction;
 
 public class Statement {
     private final String customerName;
@@ -14,21 +13,22 @@ public class Statement {
     }
 
     public String generateStatement() {
-        double totalAmount = 0;
         String statementText = "";
         statementText += statementTitle();
 
         for (Rental rental : rentals) {
-            double thisAmount = rental.determineAmount();
-            statementText += generateReportLine(rental, thisAmount);
-            totalAmount += thisAmount;
+            statementText += generateReportLine(rental, rental.determineAmount());
         }
 
-        statementText += generateFooterLine(totalAmount, determineFrequentRenterPoints());
+        statementText += generateFooterLine(calculateTotalAmount(), calculateFrequentRenterPoints());
         return statementText;
     }
 
-    private int determineFrequentRenterPoints() {
+    private double calculateTotalAmount() {
+        return rentals.stream().mapToDouble(Rental::determineAmount).sum();
+    }
+
+    private int calculateFrequentRenterPoints() {
         return rentals.stream().mapToInt(Rental::determineFrequentRenterPoints).sum();
     }
 
