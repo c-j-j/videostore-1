@@ -12,10 +12,6 @@ public class Statement {
         rentals.add(rental);
     }
 
-    public String getCustomerName() {
-        return customerName;
-    }
-
     public String generateStatement() {
         double totalAmount = 0;
         int frequentRenterPoints = 0;
@@ -35,7 +31,7 @@ public class Statement {
     }
 
     private String statementTitle() {
-        return String.format("Rental Record for %s\n", getCustomerName());
+        return String.format("Rental Record for %s\n", customerName);
     }
 
     private String generateFooterLine(double totalAmount, int frequentRenterPoints) {
@@ -44,7 +40,7 @@ public class Statement {
     }
 
     private String generateReportLine(Rental rental, double thisAmount) {
-        return String.format("\t%s\t%s\n", rental.getMovie().getTitle(), thisAmount);
+        return String.format("\t%s\t%s\n", rental.getTitle(), thisAmount);
     }
 
 
