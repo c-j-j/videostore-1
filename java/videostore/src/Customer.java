@@ -34,15 +34,17 @@ public class Customer {
         return result;
     }
 
+    private String statementTitle() {
+        return String.format("Rental Record for %s\n", getName());
+    }
+
     private String generateFooterLine(double totalAmount, int frequentRenterPoints) {
-        String result = "You owed " + String.valueOf(totalAmount) + "\n";
-        result += "You earned " + String.valueOf(frequentRenterPoints) + " frequent renter points\n";
-        return result;
+        return String.format("You owed %s\n", totalAmount)
+                + String.format("You earned %d frequent renter points\n", frequentRenterPoints);
     }
 
     private String generateReportLine(Rental rental, double thisAmount) {
-        return "\t" + rental.getMovie().getTitle() + "\t"
-                + String.valueOf(thisAmount) + "\n";
+        return String.format("\t%s\t%s\n", rental.getMovie().getTitle(), thisAmount);
     }
 
     private int determineFrequentRenterPoints(Rental rental) {
@@ -74,10 +76,6 @@ public class Customer {
                 break;
         }
         return thisAmount;
-    }
-
-    private String statementTitle() {
-        return "Rental Record for " + getName() + "\n";
     }
 
 
