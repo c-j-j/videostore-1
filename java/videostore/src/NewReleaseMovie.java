@@ -9,8 +9,7 @@ public class NewReleaseMovie extends Movie {
 
     int determineFrequentRenterPoints(int daysRented) {
         int frequentRenterPoints = 1;
-        if (priceCode == NEW_RELEASE
-                && daysRented > 1)
+        if (daysRented > 1)
             frequentRenterPoints++;
         return frequentRenterPoints;
     }
