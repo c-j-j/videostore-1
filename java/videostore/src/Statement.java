@@ -1,19 +1,19 @@
 import java.util.*;
 
 public class Statement {
-    private String name;
+    private String customerName;
     private List<Rental> rentals = new ArrayList<>();
 
-    public Statement(String name) {
-        this.name = name;
+    public Statement(String customerName) {
+        this.customerName = customerName;
     }
 
     public void addRental(Rental rental) {
         rentals.add(rental);
     }
 
-    public String getName() {
-        return name;
+    public String getCustomerName() {
+        return customerName;
     }
 
     public String generateStatement() {
@@ -35,7 +35,7 @@ public class Statement {
     }
 
     private String statementTitle() {
-        return String.format("Rental Record for %s\n", getName());
+        return String.format("Rental Record for %s\n", getCustomerName());
     }
 
     private String generateFooterLine(double totalAmount, int frequentRenterPoints) {
