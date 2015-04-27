@@ -20,12 +20,12 @@ public class VideoStoreTest
 	@Before
 	public void setUp() throws Exception {
 		statement = new Statement("Fred");
-		newReleaseMovieA = new Rental(new Movie("The Cell", Movie.NEW_RELEASE), 3);
-		newReleaseMovieB = new Rental(new Movie("The Tigger Movie", Movie.NEW_RELEASE), 3);
-		childrensMovie = new Rental(new Movie("The Tigger Movie", Movie.CHILDRENS), 3);
-		regularMovieA = new Rental(new Movie("Plan 9 from Outer Space", Movie.REGULAR), 1);
-		regularMovieB = new Rental(new Movie("8 1/2", Movie.REGULAR), 2);
-		regularMovieC = new Rental(new Movie("Eraserhead", Movie.REGULAR), 3);
+		newReleaseMovieA = new Rental(new NewReleaseMovie("The Cell"), 3);
+		newReleaseMovieB = new Rental(new NewReleaseMovie("The Tigger Movie"), 3);
+		childrensMovie = new Rental(new ChildrensMovie("The Tigger Movie"), 3);
+		regularMovieA = new Rental(new RegularMovie("Plan 9 from Outer Space"), 1);
+		regularMovieB = new Rental(new RegularMovie("8 1/2"), 2);
+		regularMovieC = new Rental(new RegularMovie("Eraserhead"), 3);
 	}
 
 	@Test
