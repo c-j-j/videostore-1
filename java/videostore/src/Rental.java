@@ -15,4 +15,13 @@ public class Rental
 
 	private Movie movie;
 	private int daysRented;
+
+	int determineFrequentRenterPoints() {
+        int frequentRenterPoints = 1;
+
+        if (getMovie().getPriceCode() == Movie.NEW_RELEASE
+                && getDaysRented() > 1)
+            frequentRenterPoints++;
+        return frequentRenterPoints;
+    }
 }

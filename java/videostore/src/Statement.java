@@ -25,7 +25,7 @@ public class Statement {
         for (Rental rental : rentals) {
 
             double thisAmount = determineAmount(rental);
-            frequentRenterPoints += determineFrequentRenterPoints(rental);
+            frequentRenterPoints += rental.determineFrequentRenterPoints();
             statementText += generateReportLine(rental, thisAmount);
             totalAmount += thisAmount;
         }
@@ -45,15 +45,6 @@ public class Statement {
 
     private String generateReportLine(Rental rental, double thisAmount) {
         return String.format("\t%s\t%s\n", rental.getMovie().getTitle(), thisAmount);
-    }
-
-    private int determineFrequentRenterPoints(Rental rental) {
-        int frequentRenterPoints = 1;
-
-        if (rental.getMovie().getPriceCode() == Movie.NEW_RELEASE
-                && rental.getDaysRented() > 1)
-            frequentRenterPoints++;
-        return frequentRenterPoints;
     }
 
     private double determineAmount(Rental rental) {
