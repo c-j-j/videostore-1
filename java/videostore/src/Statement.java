@@ -24,7 +24,7 @@ public class Statement {
 
         for (Rental rental : rentals) {
 
-            double thisAmount = determineAmount(rental);
+            double thisAmount = rental.determineAmount();
             frequentRenterPoints += rental.determineFrequentRenterPoints();
             statementText += generateReportLine(rental, thisAmount);
             totalAmount += thisAmount;
@@ -45,28 +45,6 @@ public class Statement {
 
     private String generateReportLine(Rental rental, double thisAmount) {
         return String.format("\t%s\t%s\n", rental.getMovie().getTitle(), thisAmount);
-    }
-
-    private double determineAmount(Rental rental) {
-        double thisAmount = 0;
-
-        // determines the amount for each line
-        switch (rental.getMovie().getPriceCode()) {
-            case Movie.REGULAR:
-                thisAmount += 2;
-                if (rental.getDaysRented() > 2)
-                    thisAmount += (rental.getDaysRented() - 2) * 1.5;
-                break;
-            case Movie.NEW_RELEASE:
-                thisAmount += rental.getDaysRented() * 3;
-                break;
-            case Movie.CHILDRENS:
-                thisAmount += 1.5;
-                if (rental.getDaysRented() > 3)
-                    thisAmount += (rental.getDaysRented() - 3) * 1.5;
-                break;
-        }
-        return thisAmount;
     }
 
 
