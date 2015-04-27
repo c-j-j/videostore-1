@@ -12,12 +12,7 @@ public class Rental {
     }
 
     int determineFrequentRenterPoints() {
-
-        int frequentRenterPoints = 1;
-        if (movie.getPriceCode() == Movie.NEW_RELEASE
-                && daysRented > 1)
-            frequentRenterPoints++;
-        return frequentRenterPoints;
+        return movie.determineFrequentRenterPoints(daysRented);
     }
 
     double determineAmount() {
