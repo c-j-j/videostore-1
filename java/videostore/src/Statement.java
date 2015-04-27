@@ -15,14 +15,10 @@ public class Statement {
     }
 
     public String generateStatement() {
-        String statementText = "";
-        statementText += statementTitle();
-        statementText += generateLines();
-        statementText += generateFooterLine(calculateTotalAmount(), calculateFrequentRenterPoints());
-        return statementText;
+        return statementTitle() + rentalLines() + footerLine(calculateTotalAmount(), calculateFrequentRenterPoints());
     }
 
-    private String generateLines() {
+    private String rentalLines() {
         return rentals.stream().map(this::generateReportLine).collect(Collectors.joining());
     }
 
@@ -38,7 +34,7 @@ public class Statement {
         return String.format("Rental Record for %s\n", customerName);
     }
 
-    private String generateFooterLine(double totalAmount, int frequentRenterPoints) {
+    private String footerLine(double totalAmount, int frequentRenterPoints) {
         return String.format("You owed %s\n", totalAmount)
                 + String.format("You earned %d frequent renter points\n", frequentRenterPoints);
     }
